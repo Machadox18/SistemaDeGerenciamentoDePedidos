@@ -16,4 +16,10 @@ public class PedidoService {
         pedidos.add(pedido);
         pedidosPorId.put(pedido.id(), pedido);
     }
+
+    public void listarPedidos() {
+        pedidos.forEach(System.out::println);
+    }
+
+
 }
