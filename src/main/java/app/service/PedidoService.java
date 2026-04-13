@@ -21,5 +21,8 @@ public class PedidoService {
         pedidos.forEach(System.out::println);
     }
 
-
+    public void buscarPedidoPorId(int id) {
+        Pedido pedido = pedidosPorId.get(id);
+        System.out.println(pedido);
+    }
 }
