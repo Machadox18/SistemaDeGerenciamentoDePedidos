@@ -1,11 +1,13 @@
 package app.service;
 
 import app.model.Pedido;
+import app.model.Produto;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class PedidoService {
 
@@ -21,8 +23,22 @@ public class PedidoService {
         pedidos.forEach(System.out::println);
     }
 
-    public void buscarPedidoPorId(int id) {
+    public void buscarPorId(int id) {
         Pedido pedido = pedidosPorId.get(id);
         System.out.println(pedido);
+    }
+
+    public void listarPedidosCaros(double valor) {
+        pedidos.stream()
+                .filter(p -> p.total() > valor)
+                .forEach(System.out::println);
+    }
+
+    public void listarProdutosVendidos() {
+        List<Produto> produtos = pedidos.stream()
+                .flatMap(p -> p.produtos().stream())
+                .collect(Collectors.toList());
+
+        produtos.forEach(System.out::println);
     }
 }
