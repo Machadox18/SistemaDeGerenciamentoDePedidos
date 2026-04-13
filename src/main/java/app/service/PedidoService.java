@@ -41,4 +41,12 @@ public class PedidoService {
 
         produtos.forEach(System.out::println);
     }
+
+    public void totalGeral() {
+        double total = pedidos.stream()
+                .mapToDouble(Pedido::total)
+                .sum();
+
+        System.out.println("Total geral: " + total);
+    }
 }
