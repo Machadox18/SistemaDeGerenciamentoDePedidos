@@ -1,4 +1,12 @@
 package app.model;
 
-public record Pedido() {
+import java.util.List;
+
+public record Pedido(int id, List<Produto> produtos) {
+
+    public double total() {
+        return produtos.stream()
+                .mapToDouble(Produto::preco)
+                .sum();
+    }
 }
